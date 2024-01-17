@@ -2,7 +2,7 @@
 |:----------------:|:------------------:|:-------------:|
 | [![Regression](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml/badge.svg)](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml) | [![Read The Docs Status](https://readthedocs.org/projects/mom6/badge/?version=main)](https://mom6.readthedocs.io/en/main/?badge=main) | [![codecov](https://codecov.io/gh/NOAA-GFDL/MOM6/branch/dev/gfdl/graph/badge.svg?token=uF8SVydCdp)](https://codecov.io/gh/NOAA-GFDL/MOM6) |
 
-# building and compiling files on poseidon 
+# Building and compiling FMS and MOM6 on Poseidon @ WHOI
 ## build fms
 
 ```
@@ -32,6 +32,17 @@ mkdir -p build/ice_ocean_SIS2/
 ../../src/mkmf/bin/mkmf -t ../../src/mkmf/templates/linux-ubuntu-xenial-gnu.mk -o '-I../fms' -p MOM6 -l '-L../fms -lfms' -c '-Duse_AM3_physics -D_USE_LEGACY_LAND_' path_names )
 
 (cd build/ice_ocean_SIS2/;  make REPRO=1 MOM6 -j)
+```
+
+## run ice-ocean-SIS2
+
+```
+module load gcc/9.3.1
+module load openmpi/gcc/3.0.1
+module load netcdf/gcc9
+
+cd ice_ocean_SIS2/OM_1deg
+mpirun -np N ../../build/ice_ocean_SIS2/MOM6 #N = number of processors 
 ```
 
 # MOM6-examples
