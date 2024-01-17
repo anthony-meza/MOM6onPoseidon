@@ -34,6 +34,11 @@ mkdir -p build/ice_ocean_SIS2/
 (cd build/ice_ocean_SIS2/;  make REPRO=1 MOM6 -j)
 ```
 
+## download OM_1deg files
+
+Access necessary configuration and forcing files from this link [ftp link](ftp.gfdl.noaa.gov/perm/Alistair.Adcroft/MOM6-testing). Copy files to ```ice_ocean_SIS2/OM_1deg```
+
+
 ## run ice-ocean-SIS2
 
 ```
