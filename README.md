@@ -19,7 +19,7 @@ mkdir -p build/fms/
 
 ## build ice-ocean-SIS2
 
-module load gcc/9.3.1 
+ ```module load gcc/9.3.1
 module load openmpi/gcc/3.0.1
 module load netcdf/gcc9
 
@@ -29,7 +29,7 @@ mkdir -p build/ice_ocean_SIS2/
 (cd build/ice_ocean_SIS2/; \
 ../../src/mkmf/bin/mkmf -t ../../src/mkmf/templates/linux-ubuntu-xenial-gnu.mk -o '-I../fms' -p MOM6 -l '-L../fms -lfms' -c '-Duse_AM3_physics -D_USE_LEGACY_LAND_' path_names )
 
-(cd build/ice_ocean_SIS2/;  make REPRO=1 MOM6 -j)
+(cd build/ice_ocean_SIS2/;  make REPRO=1 MOM6 -j)```
 
 
 # MOM6-examples
