@@ -7,7 +7,7 @@
 
 ```
 module load gcc/9.3.1 
-module load openmpi/gcc/3.0.1
+module load openmpi/gcc
 module load netcdf/gcc9
 
 rm -r build/fms
@@ -22,7 +22,7 @@ mkdir -p build/fms/
 
 ```
 module load gcc/9.3.1
-module load openmpi/gcc/3.0.1
+module load openmpi/gcc
 module load netcdf/gcc9
 
 mkdir -p build/ice_ocean_SIS2/
@@ -43,7 +43,7 @@ Access necessary configuration and forcing files from this link [ftp link](ftp.g
 
 ```
 module load gcc/9.3.1
-module load openmpi/gcc/3.0.1
+module load openmpi/gcc
 module load netcdf/gcc9
 
 cd ice_ocean_SIS2/OM_1deg
