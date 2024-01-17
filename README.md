@@ -2,6 +2,36 @@
 |:----------------:|:------------------:|:-------------:|
 | [![Regression](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml/badge.svg)](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml) | [![Read The Docs Status](https://readthedocs.org/projects/mom6/badge/?version=main)](https://mom6.readthedocs.io/en/main/?badge=main) | [![codecov](https://codecov.io/gh/NOAA-GFDL/MOM6/branch/dev/gfdl/graph/badge.svg?token=uF8SVydCdp)](https://codecov.io/gh/NOAA-GFDL/MOM6) |
 
+# building and compiling files on poseidon 
+## build fms
+
+module load gcc/9.3.1 
+module load openmpi/gcc/3.0.1
+module load netcdf/gcc9
+
+rm -r build/fms
+mkdir -p build/fms/
+(cd build/fms/; rm -f path_names; \
+../../src/mkmf/bin/list_paths -l ../../src/FMS; \
+../../src/mkmf/bin/mkmf -t ../../src/mkmf/templates/linux-ubuntu-xenial-gnu.mk -p libfms.a -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names)
+
+(cd build/fms/; make NETCDF=3 REPRO=1 libfms.a -j)
+
+## build ice-ocean-SIS2
+
+module load gcc/9.3.1 
+module load openmpi/gcc/3.0.1
+module load netcdf/gcc9
+
+mkdir -p build/ice_ocean_SIS2/
+(cd build/ice_ocean_SIS2/; rm -f path_names; \
+../../src/mkmf/bin/list_paths -l ./ ../../src/MOM6/config_src/{infra/FMS1,memory/dynamic_symmetric,drivers/FMS_cap,external} ../../src/SIS2/config_src/dynamic_symmetric ../../src/MOM6/src/{*,*/*}/ ../../src/{atmos_null,coupler,land_null,ice_param,icebergs/src,SIS2,FMS/coupler,FMS/include}/)
+(cd build/ice_ocean_SIS2/; \
+../../src/mkmf/bin/mkmf -t ../../src/mkmf/templates/linux-ubuntu-xenial-gnu.mk -o '-I../fms' -p MOM6 -l '-L../fms -lfms' -c '-Duse_AM3_physics -D_USE_LEGACY_LAND_' path_names )
+
+(cd build/ice_ocean_SIS2/;  make REPRO=1 MOM6 -j)
+
+
 # MOM6-examples
 
 This repository provides the configurations (input parameters and data) and their corresponding
