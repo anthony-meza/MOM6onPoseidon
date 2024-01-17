@@ -3,7 +3,7 @@
 | [![Regression](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml/badge.svg)](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml) | [![Read The Docs Status](https://readthedocs.org/projects/mom6/badge/?version=main)](https://mom6.readthedocs.io/en/main/?badge=main) | [![codecov](https://codecov.io/gh/NOAA-GFDL/MOM6/branch/dev/gfdl/graph/badge.svg?token=uF8SVydCdp)](https://codecov.io/gh/NOAA-GFDL/MOM6) |
 
 # Building and compiling FMS and MOM6 on Poseidon @ WHOI
-## build fms
+## Step 1: build fms
 
 ```
 module load gcc/9.3.1 
@@ -18,7 +18,7 @@ mkdir -p build/fms/
 
 (cd build/fms/; make NETCDF=3 REPRO=1 libfms.a -j)
 ```
-## build ice-ocean-SIS2
+## Step 2: build ice-ocean-SIS2
 
 ```
 module load gcc/9.3.1
@@ -34,12 +34,12 @@ mkdir -p build/ice_ocean_SIS2/
 (cd build/ice_ocean_SIS2/;  make REPRO=1 MOM6 -j)
 ```
 
-## download OM_1deg files
+## Step 3: download OM_1deg files
 
 Access necessary configuration and forcing files from this link [ftp link](ftp.gfdl.noaa.gov/perm/Alistair.Adcroft/MOM6-testing). Copy files to ```ice_ocean_SIS2/OM_1deg```
 
 
-## run ice-ocean-SIS2
+## Step 4: run ice-ocean-SIS2
 
 ```
 module load gcc/9.3.1
