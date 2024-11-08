@@ -3,6 +3,14 @@
 | [![Regression](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml/badge.svg)](https://github.com/NOAA-GFDL/MOM6/actions/workflows/regression.yml) | [![Read The Docs Status](https://readthedocs.org/projects/mom6/badge/?version=main)](https://mom6.readthedocs.io/en/main/?badge=main) | [![codecov](https://codecov.io/gh/NOAA-GFDL/MOM6/branch/dev/gfdl/graph/badge.svg?token=uF8SVydCdp)](https://codecov.io/gh/NOAA-GFDL/MOM6) |
 
 # Building and compiling FMS and MOM6 on Poseidon @ WHOI
+
+## Step 0: download repository 
+
+```
+git clone git@github.com:anthony-meza/MOM6onPoseidon.git
+```
+
+
 ## Step 1: build fms
 
 ```
