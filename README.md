@@ -4,10 +4,12 @@
 
 # Building and compiling FMS and MOM6 on Poseidon @ WHOI
 
-## Step 0: download repository 
+## Step 0: download repository and change directories
 
 ```
 git clone git@github.com:anthony-meza/MOM6onPoseidon.git
+
+cd MOM6onPoseidon
 ```
 
 
